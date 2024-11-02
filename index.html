@@ -3,33 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAsked Wolf Productions</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Masked Wolf Productions</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #CAF0F8;
-            color: #03045E;
+            background-color: #121212;
+            color: #ffffff;
             text-align: center;
+            padding: 20px;
         }
-        a {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #735CDD;
+        button {
+            background-color: #ff5500;
             color: white;
-            text-decoration: none;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px; /* Space between buttons */
+            font-size: 16px;
             border-radius: 5px;
         }
-        a:hover {
-            background-color: #00B4D8;
+        button:hover {
+            background-color: #e04e00;
+        }
+        .section {
+            display: none; /* Hide all sections by default */
+            margin-top: 40px; /* Space above each section */
+        }
+        .active {
+            display: block; /* Show active section */
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the title */
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to MAsked Wolf Productions</h1>
-    <h2>Discover Our Work</h2>
-    <a href="snake_game.html">Play Snake Game</a>
-    <a href="tic_tac_toe.html">Play Tic Tac Toe</a>
-    <a href="uno.html">Play Uno</a>
+    <h1>Welcome to Masked Wolf Productions</h1>
+    <img src="https://ugc.production.linktr.ee/7f8a30da-4285-4849-97c3-d197e2b2600a_Masked-Wolf-logos-black.png?io=true&size=avatar-v3_0" alt="Masked Wolf Productions Logo" style="max-width: 200px; margin-bottom: 20px;">
+    
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('about')">About</button>
+    <button onclick="showSection('contact')">Contact</button>
+    
+    <div id="home" class="section active">
+        <h2>Home Section</h2>
+        <p>Welcome to our official page! Discover our projects and collaborations.</p>
+    </div>
+    
+    <div id="about" class="section">
+        <h2>About Us</h2>
+        <p>Masked Wolf Productions focuses on creating unique and engaging content.</p>
+    </div>
+    
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>For inquiries, please reach out via our email: info@maskedwolfproductions.com</p>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
