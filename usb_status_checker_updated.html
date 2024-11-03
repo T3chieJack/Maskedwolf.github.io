@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USB Status Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .status {
+            text-align: center;
+        }
+        .status p {
+            font-size: 2em;
+            margin: 0;
+        }
+        .online {
+            color: green;
+        }
+        .offline {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="status">
+        <p id="status-text" class="offline">Checking USB status...</p>
+    </div>
+
+    <script>
+        // URL of your backend status endpoint
+        const statusUrl = "https://t3chiejack.github.io/Maskedwolf.github.io/api/status"; // Update with your actual endpoint
+
+        // Function to check USB status
+        async function checkStatus() {
+            try {
+                const response = await fetch(statusUrl);
+                const data = await response.json();
+
+                const statusText = document.getElementById("status-text");
+                
+                if (data.status === "online") {
+                    statusText.textContent = "USB is Online";
+                    statusText.className = "online";
+                } else {
+                    statusText.textContent = "USB is Offline";
+                    statusText.className = "offline";
+                }
+            } catch (error) {
+                console.error("Error checking USB status:", error);
+            }
+        }
+
+        // Check USB status every second
+        setInterval(checkStatus, 1000);
+    </script>
+</body>
+</html>
